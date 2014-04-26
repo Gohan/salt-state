@@ -5,6 +5,7 @@ Install Shadowsocks Depend Pkgs:
       - "autoconf"
       - "libtool"
       - "libssl-dev"
+      - "git"
 
 Clone Shadowsocks Github:
   git.latest:
