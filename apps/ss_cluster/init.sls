@@ -19,8 +19,8 @@ Update Shawdowsocks Server:
            stdout_logfile=/var/log/shadowsocks_{{loop.index}}.log
            autostart=true
            autorestart=true
-           user=gohan
-           group=gohan
+           user=root
+           group=root
        {% endfor %}
     - user: root
     - group: root
@@ -32,6 +32,8 @@ Update Shawdowsocks Server:
 shadowsocks_{{loop.index}}:
   supervisord:
     - running
+    - restart: True
+    - update: True
     - required:
       - sls: tools.supervisor
     - watch:
