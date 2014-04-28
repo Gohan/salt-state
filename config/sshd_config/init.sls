@@ -1,3 +1,6 @@
+include:
+  - tools.openssh_server
+
 ssh:
   service:
     - running
@@ -16,4 +19,5 @@ ssh:
     - context: {
         port: {{ pillar['sshd_config']['ssh_server_port'] }},
     }
-
+    - require:
+      - sls: tools.openssh_server
