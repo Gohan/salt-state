@@ -1,3 +1,12 @@
+salt-minion:
+  service:
+    - running
+    - enable: True
+    - reload: True
+    - watch:
+      - file: /etc/salt/minion.d/*.conf
+      - file: /etc/salt/minion
+
 /etc/salt/minion.d/100.master_settings.conf:
   file.managed:
     - source: salt://config/salt_minion/100.master_settings.conf
