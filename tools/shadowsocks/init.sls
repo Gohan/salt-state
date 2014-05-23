@@ -7,12 +7,20 @@ Install Shadowsocks Depend Pkgs:
       - "libssl-dev"
       - "git"
 
+Revert All:
+  cmd.run:
+    - name: |
+        git checkout .
+    - cwd: /usr/share/shadowsocks/
+    - onlyif: ls /usr/share/shadowsocks
+
 Clone Shadowsocks Github:
   git.latest:
     - name: https://github.com/madeye/shadowsocks-libev.git
     - target: /usr/share/shadowsocks/
     - require:
       - pkg: Install Shadowsocks Depend Pkgs
+      - cmd: Revert All
 
 Build Shadowsocks Command:
   cmd.run:
@@ -23,7 +31,6 @@ Build Shadowsocks Command:
     - cwd: /usr/share/shadowsocks/
     - require:
       - git: Clone Shadowsocks Github
-
 
 
 #Build Shadowsocks Command:
