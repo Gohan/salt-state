@@ -5,6 +5,7 @@ include:
 Install Mysql Depend Pkgs:
   pkg.installed:
     - pkgs:
+      - "debconf-utils"
       - "build-essential"
       - "python-dev"
       - "libmysqlclient-dev"

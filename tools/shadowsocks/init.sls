@@ -13,8 +13,17 @@ Revert All:
         git checkout .
     - cwd: /usr/share/shadowsocks/
     - onlyif: ls /usr/share/shadowsocks
+    - onfail:
+       - git: Clone Shadowsocks Github
 
 Clone Shadowsocks Github:
+  git.latest:
+    - name: https://github.com/madeye/shadowsocks-libev.git
+    - target: /usr/share/shadowsocks/
+    - require:
+      - pkg: Install Shadowsocks Depend Pkgs
+
+Update Shadowsocks Github:
   git.latest:
     - name: https://github.com/madeye/shadowsocks-libev.git
     - target: /usr/share/shadowsocks/
@@ -30,8 +39,7 @@ Build Shadowsocks Command:
         make install
     - cwd: /usr/share/shadowsocks/
     - require:
-      - git: Clone Shadowsocks Github
-
+      - git: Update Shadowsocks Github
 
 #Build Shadowsocks Command:
   #cmd.run:

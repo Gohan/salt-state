@@ -32,5 +32,5 @@ htop:
         right_meter_modes=2 2 2
     - user: {{ user.username }}
     - group: {{ user.username }}
-    - mode: 664
+    - mode: 775
 {% endfor %}
