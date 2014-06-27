@@ -10,18 +10,10 @@ Install Shadowsocks Depend Pkgs:
 Revert All:
   cmd.run:
     - name: |
+        cd shadowsocks
         git checkout .
-    - cwd: /usr/share/shadowsocks/
+    - cwd: /usr/share/
     - onlyif: ls /usr/share/shadowsocks
-    - onfail:
-       - git: Clone Shadowsocks Github
-
-Clone Shadowsocks Github:
-  git.latest:
-    - name: https://github.com/madeye/shadowsocks-libev.git
-    - target: /usr/share/shadowsocks/
-    - require:
-      - pkg: Install Shadowsocks Depend Pkgs
 
 Update Shadowsocks Github:
   git.latest:

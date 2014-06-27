@@ -2,13 +2,6 @@ include:
   - tools.supervisor
   - tools.shadowsocks
 
-/etc/supervisor.d:
-  file.directory:
-    - user: root
-    - group: root
-    - mode: 775
-    - makedirs: True
-
 Update Shawdowsocks Server:
   file.managed:
     - name: /etc/supervisor.d/shadowsocks_server.ini
@@ -25,8 +18,6 @@ Update Shawdowsocks Server:
     - user: root
     - group: root
     - mode: 664
-    - required:
-      - file: /etc/supervisor.d
 
 {% for server in pillar['shadowsocks']['server'] %}
 shadowsocks_{{loop.index}}:

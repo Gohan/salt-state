@@ -26,3 +26,10 @@ Install Supervisor Initscript:
     - cwd: /
     - watch:
       - file: Install Supervisor Initscript
+
+/etc/supervisor.d:
+  file.directory:
+    - user: root
+    - group: root
+    - mode: 775
+    - makedirs: True
