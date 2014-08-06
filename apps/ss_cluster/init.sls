@@ -8,7 +8,7 @@ Update Shawdowsocks Server:
     - contents: |
        {% for server in pillar['shadowsocks']['server'] %}
            [program:shadowsocks_{{loop.index}}]
-           command=/usr/local/bin/ss-server -s 0.0.0.0 -p {{server['port']}} -k {{server['pass']}} -m {{server['encryption']}}
+           command=/usr/local/bin/ss-server -s {{server['ip']|default('0.0.0.0')}} -p {{server['port']}} -k {{server['pass']}} -m {{server['encryption']}}
            stdout_logfile=/var/log/shadowsocks_{{loop.index}}.log
            autostart=true
            autorestart=true
