@@ -26,6 +26,12 @@ Install Supervisor Initscript:
     - cwd: /
     - watch:
       - file: Install Supervisor Initscript
+  service:
+    - running
+    - name: supervisord
+    - enable: True
+    - require:
+      - cmd: Install Supervisor Initscript
 
 /etc/supervisor.d:
   file.directory:
